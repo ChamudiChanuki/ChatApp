@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: read #This is required for actions/checkout
 
@@ -24,21 +24,19 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        working-directory: ./chat-backend
         run: dotnet build --configuration Release
 
       - name: dotnet publish
-        working-directory: ./chat-backend
-        run: dotnet publish -c Release -o ./publish
+        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ./chat-backend/publish
+          path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: build
     permissions:
       id-token: write #This is required for requesting the JWT
@@ -53,9 +51,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_568A2190F38C466CB30D7B4F37AFFD76 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_021E440B121E453CB4F5DC7A1C30D44F }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_8A5748CAA9E84F87B54A1D5BE396548A }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_55ABB76AA7844550ACD32560B91030DB }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9725BB7B7C334428B9BBF955226ECEF6 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_8949B4AF5EEF4A8BBE43C79B7BD459A2 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -64,5 +62,4 @@ jobs:
           app-name: 'ChatApp-Backend'
           slot-name: 'Production'
           package: .
-
           
