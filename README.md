@@ -1,4 +1,5 @@
 Real-Time Chat Application
+
 This repository contains a small full-stack chat system.
 
 The solution includes:
@@ -21,7 +22,7 @@ Update these with your actual links:
  
  2. Technologies Used
 
-Backend
+  Backend
 
 - .NET 8 (ASP.NET Core Web API)
 - SignalR for real-time communication
@@ -29,14 +30,14 @@ Backend
 - SQL Server as the database
 - JWT Bearer Authentication for login + securing SignalR
 
-Frontend
+  Frontend
 
 - Next.js (App Router)
 
 - @microsoft/signalr
 - CSS
 
-DevOps / Hosting
+  DevOps / Hosting
 
 - Azure App Service for backend deployment
 - Netlify for frontend deployment
@@ -62,5 +63,7 @@ DevOps / Hosting
 4. Possible Future Improvements
 
 -Add user profiles (avatar, display name, status).
+
 -Implement group chats and chat rooms.
+
 -Improve design for mobile devices with a more refined layout and animations
