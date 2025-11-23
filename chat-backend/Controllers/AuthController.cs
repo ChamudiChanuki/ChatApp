@@ -50,7 +50,7 @@ namespace FormulaOne.ChatService.Controllers
             if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
                 return BadRequest("Username and password are required.");
 
-            // Check if username exists
+            
             var existing = await _dbContext.ChatUsers
                 .AnyAsync(u => u.Username == request.Username);
             if (existing)
@@ -96,7 +96,6 @@ namespace FormulaOne.ChatService.Controllers
             return Ok(response);
         }
 
-        // ============ Helpers ============
 
         private void CreatePasswordHash(string password, out byte[] hash, out byte[] salt)
         {
