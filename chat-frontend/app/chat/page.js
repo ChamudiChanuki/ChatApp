@@ -1,22 +1,22 @@
-// app/chat/page.js
+
 "use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import * as signalR from "@microsoft/signalr";
 
-// === BACKEND URLs ===
+
 const API_BASE_URL =
   "https://chatapp-backend-dqbjhcbdcdggf2dn.centralindia-01.azurewebsites.net";
 const HUB_URL = `${API_BASE_URL}/chatHub`;
 
-// internal room name for pair of users (NOT shown to UI)
+
 function getPrivateRoomName(user1, user2) {
   const sorted = [user1, user2].sort();
   return `private-${sorted[0]}-${sorted[1]}`;
 }
 
-// default avatar initials
+
 function getInitials(name) {
   if (!name) return "?";
   const parts = name.trim().split(/\s+/);
@@ -41,7 +41,7 @@ export default function ChatPage() {
   const [messages, setMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
 
-  // 1. Load auth info from localStorage
+ 
   useEffect(() => {
     const storedUser =
       typeof window !== "undefined"
@@ -59,7 +59,7 @@ export default function ChatPage() {
     setToken(storedToken);
   }, [router]);
 
-  // 2. Build SignalR connection once we have token
+  
   useEffect(() => {
     if (!token) return;
 
@@ -73,7 +73,7 @@ export default function ChatPage() {
     setConnection(conn);
   }, [token]);
 
-  // 3. Start connection and setup ReceiveMessage
+  
   useEffect(() => {
     if (!connection) return;
 
@@ -101,7 +101,7 @@ export default function ChatPage() {
     };
   }, [connection]);
 
-  // 4. Load contacts (all users except current)
+  
   useEffect(() => {
     if (!token) return;
 
@@ -128,20 +128,20 @@ export default function ChatPage() {
     loadContacts();
   }, [token]);
 
-  // 5. When clicking a contact: join private room + load history
+  
   const handleSelectContact = async (contact) => {
     if (!connection || !username) return;
 
     const room = getPrivateRoomName(username, contact);
 
     try {
-      // Join internal room on server
+      
       await connection.invoke("JoinSpecificRoom", {
         username: username,
         chatRoom: room,
       });
 
-      // Load message history for that room
+      
       try {
         const res = await fetch(
           `${API_BASE_URL}/api/messages/${encodeURIComponent(room)}`,
@@ -175,7 +175,7 @@ export default function ChatPage() {
     }
   };
 
-  // 6. Send message to selected contact
+  
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!connection || !currentRoom || !messageInput.trim()) return;
