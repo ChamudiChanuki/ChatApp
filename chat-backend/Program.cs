@@ -66,7 +66,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("CorsPolicy", policy =>
     {
         policy
-            .WithOrigins("http://localhost:3000")   
+            .WithOrigins("https://illustrious-banoffee-3f7ae1.netlify.app")   
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
