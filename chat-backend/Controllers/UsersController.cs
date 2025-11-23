@@ -9,7 +9,7 @@ namespace FormulaOne.ChatService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] // must be logged in (JWT)
+    [Authorize] 
     public class UsersController : ControllerBase
     {
         private readonly ChatAppDbContext _dbContext;
@@ -19,14 +19,11 @@ namespace FormulaOne.ChatService.Controllers
             _dbContext = dbContext;
         }
 
-        /// <summary>
-        /// Returns all usernames except the currently logged-in user.
-        /// GET: api/users
-        /// </summary>
+    
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            // Set in AuthController -> GenerateJwtToken: ClaimTypes.Name = user.Username
+            
             var currentUsername = User.Identity?.Name;
 
             var allUsernames = await _dbContext.ChatUsers
@@ -40,10 +37,7 @@ namespace FormulaOne.ChatService.Controllers
             return Ok(contacts);
         }
 
-        /// <summary>
-        /// Returns information about the current logged-in user.
-        /// GET: api/users/me
-        /// </summary>
+       
         [HttpGet("me")]
         public IActionResult GetCurrentUser()
         {
