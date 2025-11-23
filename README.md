@@ -12,8 +12,6 @@ Users can register, log in, see a list of other users, and start one-to-one real
 
  1. Live URLs
 
-Update these with your actual links:
-
 - Frontend (Netlify):  
   https://illustrious-banoffee-3f7ae1.netlify.app
 
