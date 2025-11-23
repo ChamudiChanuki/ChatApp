@@ -1,3 +1,29 @@
+Task 1
+Mobile Homepage – Travel App
+
+- Design Concept
+
+TravelUp features a clean, minimalist mobile layout that helps travelers quickly explore destinations and access essential services. The top section includes branding and a search bar, while six core travel utilities (Flights, Stays, Transport, Weather, Currency, Safety) are presented as simple, touch-friendly icon cards.A “Wander Worthy Spots” section highlights destinations with large, immersive images, and a bottom navigation bar provides easy access to Home, Browser, Explore, and Settings.
+
+- Tools / Technologies Used
+
+Figma – UI/UX design
+Heroicons (Outline) – https://heroicons.com/outline
+Google Fonts – https://fonts.google.com/
+
+- Assumptions / Design Inspiration
+
+Designed for solo travelers looking for quick access to key travel features.
+
+Inspired by modern travel apps like Airbnb, Hopper, and Booking.com with focus on clarity, soft shadows, and rich imagery.
+
+Sample Sri Lankan destinations used to reflect real-world travel content.
+
+Figma Design Link : https://www.figma.com/design/VTEsBzGDkX4HUvR1kKqx5n/TravelUp?node-id=0-1&t=qRgeY36zRe4fefry-1
+
+
+Task 2
+
 Real-Time Chat Application
 
 This repository contains a small full-stack chat system.
