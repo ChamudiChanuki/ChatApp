@@ -1,4 +1,4 @@
-// app/login/page.js
+
 "use client";
 
 import { useState } from "react";
@@ -32,11 +32,11 @@ export default function LoginPage() {
 
       const data = await res.json(); // { username, token }
 
-      // save auth info for chat page
+      
       localStorage.setItem("chat_username", data.username);
       localStorage.setItem("chat_token", data.token);
 
-      // go to chat page
+      
       router.push("/chat");
     } catch (err) {
       console.error(err);
