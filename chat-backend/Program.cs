@@ -7,19 +7,17 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-var connectionString = builder.Configuration.GetConnectionString("ChatDb")
-    ?? "Server=localhost;Database=ChatDb;Trusted_Connection=True;TrustServerCertificate=True;";
+var connectionString = builder.Configuration.GetConnectionString("ChatDb");
 
 builder.Services.AddDbContext<ChatAppDbContext>(options =>
     options.UseSqlServer(connectionString));
-// JWT Auth
+
 var jwtKey = builder.Configuration["Jwt:Key"]!;
 var jwtIssuer = builder.Configuration["Jwt:Issuer"];
 var jwtAudience = builder.Configuration["Jwt:Audience"];
@@ -32,7 +30,7 @@ builder.Services
     })
     .AddJwtBearer(options =>
     {
-        options.RequireHttpsMetadata = false; // dev
+        options.RequireHttpsMetadata = false; 
         options.SaveToken = true;
         options.TokenValidationParameters = new TokenValidationParameters
         {
@@ -45,7 +43,7 @@ builder.Services
             ClockSkew = TimeSpan.Zero
         };
 
-        // This allows SignalR WebSockets to send token via query string ?access_token=
+        
         options.Events = new JwtBearerEvents
         {
             OnMessageReceived = context =>
@@ -68,7 +66,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("CorsPolicy", policy =>
     {
         policy
-            .WithOrigins("http://localhost:3000")   // Next.js dev URL
+            .WithOrigins("https://illustrious-banoffee-3f7ae1.netlify.app")   
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -79,13 +77,14 @@ builder.Services.AddSingleton<SharedDb>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Chat API V1");
-    // c.RoutePrefix = string.Empty; // uncomment if you want Swagger at root "/"
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Chat API V1");    
 });
+
 
 
 app.UseCors("CorsPolicy");

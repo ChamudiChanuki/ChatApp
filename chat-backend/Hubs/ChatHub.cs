@@ -18,7 +18,7 @@ namespace FormulaOne.ChatService.Hubs
             _dbContext = dbContext;
         }
 
-        // You can delete this if not used
+        
         public async Task JoinChat(UserConnection conn)
         {
             await Clients.All.SendAsync("ReceiveMessage", "admin",
@@ -27,15 +27,15 @@ namespace FormulaOne.ChatService.Hubs
 
         public async Task JoinSpecificRoom(UserConnection conn)
         {
-            // Get username from JWT (fallback to conn.Username)
+            
             var username = Context.User?.Identity?.Name ?? conn.Username;
             conn.Username = username;
 
-            // Add this connection to the SignalR group + in-memory map
+            
             await Groups.AddToGroupAsync(Context.ConnectionId, conn.ChatRoom);
             _sharedDb.connections[Context.ConnectionId] = conn;
 
-            // ❌ no admin join message saved or sent anymore
+            
             await Task.CompletedTask;
         }
 

@@ -15,7 +15,7 @@ namespace FormulaOne.ChatService.Controllers
             _dbContext = dbContext;
         }
 
-        // GET: api/messages/dev?count=50
+        
         [HttpGet("{room}")]
         public async Task<IActionResult> GetRecentMessages(string room, [FromQuery] int count = 50)
         {
@@ -23,10 +23,10 @@ namespace FormulaOne.ChatService.Controllers
                 .Where(m => m.Room == room)
                 .OrderByDescending(m => m.SentAt)
                 .Take(count)
-                .OrderBy(m => m.SentAt) // oldest -> newest for UI
+                .OrderBy(m => m.SentAt) 
                 .ToListAsync();
 
-            // Return only what frontend needs
+            
             var result = messages.Select(m => new
             {
                 m.Sender,
