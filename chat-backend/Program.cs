@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
@@ -17,7 +17,7 @@ var connectionString = builder.Configuration.GetConnectionString("ChatDb");
 
 builder.Services.AddDbContext<ChatAppDbContext>(options =>
     options.UseSqlServer(connectionString));
-// JWT Auth
+
 var jwtKey = builder.Configuration["Jwt:Key"]!;
 var jwtIssuer = builder.Configuration["Jwt:Issuer"];
 var jwtAudience = builder.Configuration["Jwt:Audience"];
@@ -43,7 +43,7 @@ builder.Services
             ClockSkew = TimeSpan.Zero
         };
 
-        // This allows SignalR WebSockets to send token
+        
         options.Events = new JwtBearerEvents
         {
             OnMessageReceived = context =>
@@ -78,7 +78,7 @@ builder.Services.AddSingleton<SharedDb>();
 var app = builder.Build();
 
 
-// Configure the HTTP request pipeline.
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
