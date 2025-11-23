@@ -1,4 +1,5 @@
 Task 1
+
 Mobile Homepage – Travel App
 
 - Design Concept
@@ -8,7 +9,9 @@ TravelUp features a clean, minimalist mobile layout that helps travelers quickly
 - Tools / Technologies Used
 
 Figma – UI/UX design
+
 Heroicons (Outline) – https://heroicons.com/outline
+
 Google Fonts – https://fonts.google.com/
 
 - Assumptions / Design Inspiration
@@ -19,7 +22,7 @@ Inspired by modern travel apps like Airbnb, Hopper, and Booking.com with focus o
 
 Sample Sri Lankan destinations used to reflect real-world travel content.
 
-Figma Design Link : https://www.figma.com/design/VTEsBzGDkX4HUvR1kKqx5n/TravelUp?node-id=0-1&t=qRgeY36zRe4fefry-1
+- Figma Design Link : https://www.figma.com/design/VTEsBzGDkX4HUvR1kKqx5n/TravelUp?node-id=0-1&t=qRgeY36zRe4fefry-1
 
 
 Task 2
