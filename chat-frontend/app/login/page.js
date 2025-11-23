@@ -4,7 +4,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const API_BASE_URL = "http://localhost:5288";
+const API_BASE_URL =
+  "https://chatapp-backend-dqbjhcbdcdggf2dn.centralindia-01.azurewebsites.net";
 
 export default function LoginPage() {
   const router = useRouter();

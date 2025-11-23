@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import * as signalR from "@microsoft/signalr";
 
 // === BACKEND URLs ===
-const API_BASE_URL = "http://localhost:5288";
+const API_BASE_URL =
+  "https://chatapp-backend-dqbjhcbdcdggf2dn.centralindia-01.azurewebsites.net";
 const HUB_URL = `${API_BASE_URL}/chatHub`;
 
 // internal room name for pair of users (NOT shown to UI)
