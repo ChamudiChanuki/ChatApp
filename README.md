@@ -49,7 +49,7 @@ Users can register, log in, see a list of other users, and start one-to-one real
  
  2. Technologies Used
 
-  Backend
+   Backend
 
 - .NET 8 (ASP.NET Core Web API)
 - SignalR for real-time communication
@@ -60,8 +60,6 @@ Users can register, log in, see a list of other users, and start one-to-one real
   Frontend
 
 - Next.js (App Router)
-
-- @microsoft/signalr
 - CSS
 
   DevOps / Hosting
@@ -89,8 +87,8 @@ Users can register, log in, see a list of other users, and start one-to-one real
 
 4. Possible Future Improvements
 
--Add user profiles (avatar, display name, status).
+- Add user profiles (avatar, display name, status).
 
--Implement group chats and chat rooms.
+- Implement group chats and chat rooms.
 
--Improve design for mobile devices with a more refined layout and animations
+- Improve design for mobile devices with a more refined layout and animations
